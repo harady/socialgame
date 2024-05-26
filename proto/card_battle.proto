@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package card_battle;
+
+## User related messages
+
+// User information
+message User {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+}
+
+// User registration request
+message RegisterUserRequest {
+  string name = 1;
+  string email = 2;
+  string password = 3;
+}
+
+## Card and Battle related messages
+
+// Card information
+message Card {
+  int32 id = 1;
+  string name = 2;
+  int32 attack = 3;
+  string defense = 4;
+}
+
+// Battle information
+message Battle {
+  int32 id = 1000;
+  int32 card1_id = 1;
+  int32 card2_id = 2;
+  int32 card3_id = 3;
+  ind32 card4_id = 4;
+  int32 card5_id = 5;
+  int32 card6_id = 6; 
+  string battle_status = 7;
+}
+
+// User login request
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+}
+
+## API Services
+
+// Register a new user
+rpc RegisterUser (RegisterUserRequest) returns (User);
+
+## Card and Battle Services
+
+// Get a card by its id
+rpc GetCard (Int32ID)Request) returns (Card);
+
+// Start a battle with the chosen cards
+packut Battle {
+  repeated Card cards = 1;
+  int32 winner = 2;
+  int32 loser = 3;
+  string battle_result = 4;
+}
