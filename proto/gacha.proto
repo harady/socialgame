@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gacha;
 
-// Gacha information
+// Gacha information (一丕)
 message Gacha {
   int32 id = 1;
   string name = 2;
@@ -11,58 +11,58 @@ message Gacha {
   string end_date = 5;
 }
 
-// Item information
-message Item {
+// Aitem information (时日JJmessage Item {
   int32 id = 1;
   string name = 2;
   string rarity = 3;
   string description = 4;
 }
 
-// Gacha item information
-message GachaItem {
+// Gacha item information (和日有同字有名)�message GachaItem {
   int32 gacha_id = 1;
   int32 item_id = 2;
   float probability = 3;
 }
 
-// Request for getting the list of Gachas
+// Gacha list request (用成新)
 message GetGachaListRequest {
 }
 
-// Response with the list of Gachas
+
+// Gacha list response (修题)
 message GetGachaListResponse {
   repeated Gacha gachas = 1;
 }
 
-// Request for getting the details of a specific Gacha
+
+// Gacha details request (不成新)
 message GetGachaDetailsRequest {
   int32 gacha_id = 1;
 }
 
 
-// Response with the details of a specific Gacha
+// Gacha details response (修题)
 message GetGachaDetailsResponse {
   Gacha gacha = 1;
   repeated GachaItem items = 2;
 }
 
-
-// Request for executing a Gacha
+// Execute Gacha request (不成新)
 message ExecuteGachaRequest {
   int32 gacha_id = 1;
 }
 
-// Response with the item generated from executing the Gacha
+
+// Execute Gacha response (修题)
 message ExecuteGachaResponse {
   Item item = 1;
 }
 
 service GachaService {
-  // Get the list of Gachas
+  // Get Gacha list (GachaList)
   rpc GetGachaList(GetGachaListRequest) returns (GetGachaListResponse);
-  // Get the details of a Gacha
+  // Get Gacha details (GachaDetails)
   rpc GetGachaDetails(GetGachaDetailsRequest) returns (GetGachaDetailsResponse);
-  // Execute a specific Gacha
+  // Execute Gacha (ExecuteGacha)
   rpc ExecuteGacha(ExecuteGachaRequest) returns (ExecuteGachaResponse);
 }
