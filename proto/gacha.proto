@@ -1,9 +1,8 @@
 syntax = "proto3";
 
-
 package gacha;
 
-// 田氦由在接设
+// Gacha information
 message Gacha {
   int32 id = 1;
   string name = 2;
@@ -12,7 +11,7 @@ message Gacha {
   string end_date = 5;
 }
 
-// 来前、在前方法月
+// Aitem information
 message Item {
   int32 id = 1;
   string name = 2;
@@ -20,44 +19,49 @@ message Item {
   string description = 4;
 }
 
-// �N���剧单来前法月
+// Gacha item information
 message GachaItem {
   int32 gacha_id = 1;
   int32 item_id = 2;
   float probability = 3;
 }
 
-// 致明昀撑身开在成新内作力通请在的则享叜咦放
-
+// Gacha list request
 message GetGachaListRequest {
 }
 
+// Gacha list response message
 message GetGachaListResponse {
   repeated Gacha gachas = 1;
 }
 
+// Gacha details request
 message GetGachaDetailsRequest {
   int32 gacha_id = 1;
 }
 
+// Gacha details response message
 message GetGachaDetailsResponse {
   Gacha gacha = 1;
   repeated GachaItem items = 2;
 }
 
+// Execute Gacha request
 message ExecuteGachaRequest {
   int32 gacha_id = 1;
 }
 
+// Execute Gacha response message
 message ExecuteGachaResponse {
   Item item = 1;
 }
 
+// Service definition
 service GachaService {
-  // Gacha\u0f0d9a\0f0d Protocol
+  // Gacha list get method
   rpc GetGachaList (GetGachaListRequest) returns (GetGachaListResponse);
-  // Gacha\u0f0d9a\0f0d Protocol
+  // Gacha details get method
   rpc GetGachaDetails (GetGachaDetailsRequest) returns (GetGachaDetailsResponse);
-  // Gacha\u0f0d9a\0f0d Protocol
+  // Gacha exec method
   rpc ExecuteGacha (ExecuteGachaRequest) returns (ExecuteGachaResponse);
 }
