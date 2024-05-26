@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gacha;
 
-// ガチャ情報
+// Gacha information (Gacha information)
 message Gacha {
   int32 id = 1;
   string name = 2;
@@ -11,57 +11,54 @@ message Gacha {
   string end_date = 5;
 }
 
-// Aitem information (æ—¶æ—¥JJmessage Item {
+// Item information (Aitem information)
+message Item {
   int32 id = 1;
   string name = 2;
   string rarity = 3;
   string description = 4;
 }
 
-// Gacha item information (å’Œæ—¥æœ‰åŒå­—æœ‰å)êmessage GachaItem {
+// Gacha item information (Gacha item information){
   int32 gacha_id = 1;
   int32 item_id = 2;
   float probability = 3;
 }
 
-// Gacha list request (ç”¨æˆæ–°)
+// Gacha list request (Gacha list request)
 message GetGachaListRequest {
 }
 
-
-// Gacha list response (ä¿®é¢˜)
+// Gacha list response (Gacha list response)
 message GetGachaListResponse {
   repeated Gacha gachas = 1;
 }
 
-
-// Gacha details request (ä¸æˆæ–°)
+// Gacha details request (Gacha details request)
 message GetGachaDetailsRequest {
   int32 gacha_id = 1;
 }
 
-
-// Gacha details response (ä¿®é¢˜)
+// Gacha details response (Gacha details response)
 message GetGachaDetailsResponse {
   Gacha gacha = 1;
   repeated GachaItem items = 2;
 }
 
-// Execute Gacha request (ä¸æˆæ–°)
+// Execute Gacha request (Execute Gacha request)
 message ExecuteGachaRequest {
   int32 gacha_id = 1;
 }
 
-
-// Execute Gacha response (ä¿®é¢˜)
+// Execute Gacha response (Execute Gacha response)
 message ExecuteGachaResponse {
   Item item = 1;
 }
 
 service GachaService {
-  // Get Gacha list (GachaList)
+  // Get Gacha list (GetGachaList)
   rpc GetGachaList(GetGachaListRequest) returns (GetGachaListResponse);
-  // Get Gacha details (GachaDetails)
+  // Get Gacha details (GetGachaDetails)
   rpc GetGachaDetails(GetGachaDetailsRequest) returns (GetGachaDetailsResponse);
   // Execute Gacha (ExecuteGacha)
   rpc ExecuteGacha(ExecuteGachaRequest) returns (ExecuteGachaResponse);
