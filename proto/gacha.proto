@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+
+package gacha;
+
+// 田氦由在接设
+message Gacha {
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+  string start_date = 4;
+  string end_date = 5;
+}
+
+// 来前、在前方法月
+message Item {
+  int32 id = 1;
+  string name = 2;
+  string rarity = 3;
+  string description = 4;
+}
+
+// �N���剧单来前法月
+message GachaItem {
+  int32 gacha_id = 1;
+  int32 item_id = 2;
+  float probability = 3;
+}
+
+// 致明昀撑身开在成新内作力通请在的则享叜咦放
+
+message GetGachaListRequest {
+}
+
+message GetGachaListResponse {
+  repeated Gacha gachas = 1;
+}
+
+message GetGachaDetailsRequest {
+  int32 gacha_id = 1;
+}
+
+message GetGachaDetailsResponse {
+  Gacha gacha = 1;
+  repeated GachaItem items = 2;
+}
+
+message ExecuteGachaRequest {
+  int32 gacha_id = 1;
+}
+
+message ExecuteGachaResponse {
+  Item item = 1;
+}
+
+service GachaService {
+  // Gacha\u0f0d9a\0f0d Protocol
+  rpc GetGachaList (GetGachaListRequest) returns (GetGachaListResponse);
+  // Gacha\u0f0d9a\0f0d Protocol
+  rpc GetGachaDetails (GetGachaDetailsRequest) returns (GetGachaDetailsResponse);
+  // Gacha\u0f0d9a\0f0d Protocol
+  rpc ExecuteGacha (ExecuteGachaRequest) returns (ExecuteGachaResponse);
+}
