@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gacha;
 
-// Gacha information (Gacha information)
+// Gacha information
 message Gacha {
   int32 id = 1;
   string name = 2;
@@ -11,7 +11,7 @@ message Gacha {
   string end_date = 5;
 }
 
-// Item information (Aitem information)
+// Aitem information
 message Item {
   int32 id = 1;
   string name = 2;
@@ -19,47 +19,49 @@ message Item {
   string description = 4;
 }
 
-// Gacha item information (Gacha item information){
+// Gacha item information
+message GachaItem {
   int32 gacha_id = 1;
   int32 item_id = 2;
   float probability = 3;
 }
 
-// Gacha list request (Gacha list request)
+// Gacha list request
 message GetGachaListRequest {
 }
 
-// Gacha list response (Gacha list response)
+// Gacha list response message
 message GetGachaListResponse {
   repeated Gacha gachas = 1;
 }
 
-// Gacha details request (Gacha details request)
+// Gacha details request
 message GetGachaDetailsRequest {
   int32 gacha_id = 1;
 }
 
-// Gacha details response (Gacha details response)
+// Gacha details response message
 message GetGachaDetailsResponse {
   Gacha gacha = 1;
   repeated GachaItem items = 2;
 }
 
-// Execute Gacha request (Execute Gacha request)
+// Execute Gacha request
 message ExecuteGachaRequest {
   int32 gacha_id = 1;
 }
 
-// Execute Gacha response (Execute Gacha response)
+// Execute Gacha response message
 message ExecuteGachaResponse {
   Item item = 1;
 }
 
+// Service definition
 service GachaService {
-  // Get Gacha list (GetGachaList)
-  rpc GetGachaList(GetGachaListRequest) returns (GetGachaListResponse);
-  // Get Gacha details (GetGachaDetails)
-  rpc GetGachaDetails(GetGachaDetailsRequest) returns (GetGachaDetailsResponse);
-  // Execute Gacha (ExecuteGacha)
-  rpc ExecuteGacha(ExecuteGachaRequest) returns (ExecuteGachaResponse);
+  // Gacha list get method
+  rpc GetGachaList (GetGachaListRequest) returns (GetGachaListResponse);
+  // Gacha details get method
+  rpc GetGachaDetails (GetGachaDetailsRequest) returns (GetGachaDetailsResponse);
+  // Gacha exec method
+  rpc ExecuteGacha (ExecuteGachaRequest) returns (ExecuteGachaResponse);
 }
