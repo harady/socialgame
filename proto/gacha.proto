@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gacha;
 
-// Gacha information (一丕)
+// ガチャ情報
 message Gacha {
   int32 id = 1;
   string name = 2;
@@ -11,49 +11,49 @@ message Gacha {
   string end_date = 5;
 }
 
-// Aitem information (时日JJmessage Item {
+// Aitem information (æ—¶æ—¥JJmessage Item {
   int32 id = 1;
   string name = 2;
   string rarity = 3;
   string description = 4;
 }
 
-// Gacha item information (和日有同字有名)�message GachaItem {
+// Gacha item information (å’Œæ—¥æœ‰åŒå­—æœ‰å)êmessage GachaItem {
   int32 gacha_id = 1;
   int32 item_id = 2;
   float probability = 3;
 }
 
-// Gacha list request (用成新)
+// Gacha list request (ç”¨æˆæ–°)
 message GetGachaListRequest {
 }
 
 
-// Gacha list response (修题)
+// Gacha list response (ä¿®é¢˜)
 message GetGachaListResponse {
   repeated Gacha gachas = 1;
 }
 
 
-// Gacha details request (不成新)
+// Gacha details request (ä¸æˆæ–°)
 message GetGachaDetailsRequest {
   int32 gacha_id = 1;
 }
 
 
-// Gacha details response (修题)
+// Gacha details response (ä¿®é¢˜)
 message GetGachaDetailsResponse {
   Gacha gacha = 1;
   repeated GachaItem items = 2;
 }
 
-// Execute Gacha request (不成新)
+// Execute Gacha request (ä¸æˆæ–°)
 message ExecuteGachaRequest {
   int32 gacha_id = 1;
 }
 
 
-// Execute Gacha response (修题)
+// Execute Gacha response (ä¿®é¢˜)
 message ExecuteGachaResponse {
   Item item = 1;
 }
